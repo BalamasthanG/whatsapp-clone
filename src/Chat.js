@@ -55,14 +55,19 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat__header">
-        <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+        {roomId ? (
+          <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+        ) : (
+          ""
+        )}
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
           <p>
-            last seen{" "}
-            {new Date(
-              messages[messages.length - 1]?.timestamp?.toDate()
-            ).toUTCString()}
+            {roomId
+              ? `last seen ${" "}${new Date(
+                  messages[messages.length - 1]?.timestamp?.toDate()
+                ).toUTCString()}`
+              : " "}
           </p>
         </div>
         <div className="chat__headerRight">

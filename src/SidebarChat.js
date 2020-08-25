@@ -32,13 +32,13 @@ function SidebarChat({ id, name, addNewChat }) {
     if (roomName) {
       db.collection("rooms").add({
         name: roomName,
-        createdBy: user.dispalyName,
+        createdBy: user.displayName,
       });
     }
   };
 
   return !addNewChat ? (
-    <Link to={`/rooms/${id}`}>
+    <Link to={`/rooms/${id}`} key={id}>
       <div className="sidebarchat">
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         <div className="sidebarchat__info">
